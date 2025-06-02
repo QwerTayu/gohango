@@ -1,20 +1,25 @@
 from flask import Flask, render_template_string
 import psycopg2
+from dotenv import load_dotenv
+load_dotenv()  # .envファイルから環境変数を読み込む
+
+import os
 
 app = Flask(__name__)
 
 # PostgreSQL接続設定 (ご自身の環境に合わせて変更してください)
-DB_HOST = "localhost"
-DB_NAME = "your_database_name"  # pgAdminで作成したデータベース名
-DB_USER = "postgres"            # PostgreSQLのスーパーユーザー
-DB_PASS = "your_password"       # postgresユーザーのパスワード
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT')  # デフォルトのポートは5432
+DB_NAME = os.getenv('DB_NAME')  # pgAdminで作成したデータベース名
+DB_USER = os.getenv('DB_USER')  # PostgreSQLのスーパーユーザー
+DB_PASS = os.getenv('DB_PASS')  # postgresユーザーのパスワード
 
 @app.route('/')
 def hello_world():
     message = "Hello, Flask on Windows 11 with PostgreSQL!"
     data = []
     try:
-        conn = psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS)
+        conn = psycopg2.connect(host=DB_HOST, port=DB_PORT, database=DB_NAME, user=DB_USER, password=DB_PASS)
         cur = conn.cursor()
         cur.execute("SELECT version();") # PostgreSQLのバージョン情報を取得する簡単なクエリ
         data = cur.fetchone()
