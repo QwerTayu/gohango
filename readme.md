@@ -103,7 +103,6 @@ gohango/
 ├── .env                    # 環境変数
 ├── run.py                  # Flaskアプリを起動するスクリプト
 ├── readme.md               # このファイル
-├── requirements.txt        # パッケージリスト
 ├── pyproject.toml          # パッケージリスト
 ├── .gitignore              # .envなどのコミットしたくないフォルダ・ファイルを設定
 └── .venv/                  # Pythonの仮想環境！
@@ -113,7 +112,7 @@ gohango/
 [Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
 
 
-# archive
+# 参照不要archive
 
 ## venv 作成方法
 ```
