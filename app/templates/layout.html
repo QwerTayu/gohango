@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+
+    {% block head_css %}{% endblock %}
+</head>
+<body>
+    {% include 'components/header.html' %}
+
+    <main style="padding: 1rem;">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% block body_js %}{% endblock %}
+</body>
+</html>
