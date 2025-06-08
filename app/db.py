@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras # RealDictCursor を使う
 from flask import current_app, g 
 
 def get_db():
@@ -14,7 +15,14 @@ def get_db():
             user=current_app.config['DB_USER'],
             password=current_app.config['DB_PASS']
         )
-    return g.db # 今回は接続オブジェクトを返すね！
+    return g.db
+
+def get_cursor():
+    """
+    RealDictCursor を使うと、DBからの結果がカラム名をキーにした辞書で返ってくる
+    """
+    return get_db().cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
 
 def close_db(e=None):
     """

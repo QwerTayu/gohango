@@ -59,18 +59,55 @@ uv add パッケージ名
 1. `@/app/__init__.py` にBluePrint登録（ここにファイルがあるから読み込んでね！！ってやつ）を行う。
   ```
   from .フォルダ名.ファイル名 import ＢＰ名
-  app.register_blueprint(ＢＰ名)
+  app.register_blueprint(ＢＰ名, url_prefix='/ルーティング')
   ```
 2. `@/app/フォルダ名`フォルダを作成。他の(sampleフォルダ)とかと同じ構成にする。(`__init__.py`, `routes.py`とかもイイ感じに作成)
 
 3. 作成した`routes.py`に下記を追加
   ```
-  @ＢＰ名.route("/") # フォルダ名/の後にどのようにルーティングするか
+  @ＢＰ名.route("/") # ルーティング/の後にどのようにルーティングするか
   def 分かりやすい関数名():
       return render_template("templateフォルダ内のhtmlファイル", 渡す変数)
   ```
 
 4. `@/app/template`フォルダ内にhtmlファイルを作成。
+
+## 6. フォルダ構成
+```
+gohango/
+├── app/
+│   ├── __init__.py         # Flaskアプリケーションの初期化とBlueprint登録
+│   ├── db.py               # データベース接続関連の処理はここ
+│   │
+│   ├── services/           # APIはここに設置
+│   │   ├── __init__.py     # 空ファイル
+│   │   └── users.py        # テーブルごとにエンドポイントを作成
+│   │
+│   ├── sample/             # サンプル機能のモジュール
+│   │   ├── __init__.py     # sampleブループリントの定義
+│   │   └── routes.py       # sample機能のルーティング設定
+│   │
+│   ├── templates/          # HTMLはここ
+│   │   └── sample.html
+│   └── static/             # 静的ファイルはここ
+│       ├── css/            # HTMLファイル名.cssとかかな
+│       │   └── index.css
+│       └── js/             # HTMLファイル名.jsとかかな
+│           └── sample.js  
+│
+├── docker/                 # Docker関連
+│   ├── compose.yml  # Docker Composeの設定ファイル
+│   └── migration/          # DBのマイグレーション
+│       └── changelogs/     # マイグレーション。編集不可。必要に応じて追加
+│           └── 01_create_tables.sql
+├── .env                    # 環境変数
+├── run.py                  # Flaskアプリを起動するスクリプト
+├── readme.md               # このファイル
+├── requirements.txt        # パッケージリスト
+├── pyproject.toml          # パッケージリスト
+├── .gitignore              # .envなどのコミットしたくないフォルダ・ファイルを設定
+└── .venv/                  # Pythonの仮想環境！
+```
 
 ## 5. 参考文献
 [Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
