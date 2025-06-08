@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+    <h1>GOHANGO</h1>
+    <p>{{message}} {{query}}</p>
+    {% if query == 'foo' %}
+    <p>foo!!!!!</p>
+    {% elif query %}
+    <p>query: {{query}}</p>
+    {% else %}
+    <p>No query provided.</p>
+    {% endif %}
+    {% for hiragana in ['a', 'i', 'u', 'e', 'o'] %}
+    <p>{{hiragana}}</p>
+    {% endfor %}
+    </body>
+</html>

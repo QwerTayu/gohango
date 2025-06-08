@@ -2,7 +2,7 @@
 > ルートディレクトリである`gohango`配下で作業することを前提としています
 >
 
-## 参加する前に
+## 1. 参加する前に
 1. [UVのサイト](https://docs.astral.sh/uv/getting-started/installation/)にアクセスして`uv`をインストール。(`uv -V`でパスが通ってることを確認)
 2. `.env`ファイルを作成(以下はサンプル)
 ```
@@ -29,7 +29,7 @@ docker compose up -d
 cd ../
 ```
 
-## 開発を始める前に
+## 2. 開発を始める前に
 1. パッケージを同期する
 ```
 uv sync
@@ -43,15 +43,19 @@ docker compose run liquibase
 cd ../
 ```
 
-## 実行方法
+## 3. 実行方法
 ```
-uv run app.py
+uv run run.py
 ```
 
-## パッケージ追加方法
+## 4. パッケージ追加方法
 ```
 uv add パッケージ名
 ```
+
+## 5. 参考文献
+[Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
+
 
 # archive
 
