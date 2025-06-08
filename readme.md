@@ -4,6 +4,46 @@
 > [!NOTE]
 > 説明内の`@/`はルートディレクトリを意味します。
 
+
+## 0. フォルダ構成
+```
+gohango/
+├── app/
+│   ├── __init__.py         # Flaskアプリケーションの初期化とBlueprint登録
+│   ├── db.py               # データベース接続関連の処理はここ
+│   │
+│   ├── services/           # APIはここに設置
+│   │   ├── __init__.py     # 空ファイル
+│   │   └── users.py        # テーブルごとにエンドポイントを作成
+│   │
+│   ├── sample/             # サンプル機能のモジュール
+│   │   ├── __init__.py     # sampleブループリントの定義
+│   │   └── routes.py       # sample機能のルーティング設定
+│   │
+│   ├── templates/          # HTMLはここ
+│   │   ├── components/     # 使いまわす要素はここで管理
+│   │   │   └── header.html
+│   │   ├── layout.html     # 全体レイアウトはこのファイルで定義
+│   │   └── sample.html     # 各ページを作成していく
+│   │
+│   └── static/             # 静的ファイルはここ
+│       ├── css/            # HTMLファイル名.cssとかかな
+│       │   └── index.css
+│       └── js/             # HTMLファイル名.jsとかかな
+│           └── sample.js  
+│
+├── docker/                 # Docker関連
+│   ├── compose.yml  # Docker Composeの設定ファイル
+│   └── migration/          # DBのマイグレーション
+│       └── changelogs/     # マイグレーション。編集不可。必要に応じて追加
+│           └── 01_create_tables.sql
+├── .env                    # 環境変数
+├── run.py                  # Flaskアプリを起動するスクリプト
+├── readme.md               # このファイル
+├── pyproject.toml          # パッケージリスト
+└── .gitignore              # .envなどのコミットしたくないフォルダ・ファイルを設定
+```
+
 ## 1. 参加する前に
 1. [UVのサイト](https://docs.astral.sh/uv/getting-started/installation/)にアクセスして`uv`をインストール。(`uv -V`でパスが通ってることを確認)
 2. `.env`ファイルを作成(以下はサンプル)
@@ -71,44 +111,9 @@ uv add パッケージ名
   ```
 
 4. `@/app/template`フォルダ内にhtmlファイルを作成。
+  `include`, `macro` を多用しよう。
 
-## 6. フォルダ構成
-```
-gohango/
-├── app/
-│   ├── __init__.py         # Flaskアプリケーションの初期化とBlueprint登録
-│   ├── db.py               # データベース接続関連の処理はここ
-│   │
-│   ├── services/           # APIはここに設置
-│   │   ├── __init__.py     # 空ファイル
-│   │   └── users.py        # テーブルごとにエンドポイントを作成
-│   │
-│   ├── sample/             # サンプル機能のモジュール
-│   │   ├── __init__.py     # sampleブループリントの定義
-│   │   └── routes.py       # sample機能のルーティング設定
-│   │
-│   ├── templates/          # HTMLはここ
-│   │   └── sample.html
-│   └── static/             # 静的ファイルはここ
-│       ├── css/            # HTMLファイル名.cssとかかな
-│       │   └── index.css
-│       └── js/             # HTMLファイル名.jsとかかな
-│           └── sample.js  
-│
-├── docker/                 # Docker関連
-│   ├── compose.yml  # Docker Composeの設定ファイル
-│   └── migration/          # DBのマイグレーション
-│       └── changelogs/     # マイグレーション。編集不可。必要に応じて追加
-│           └── 01_create_tables.sql
-├── .env                    # 環境変数
-├── run.py                  # Flaskアプリを起動するスクリプト
-├── readme.md               # このファイル
-├── pyproject.toml          # パッケージリスト
-├── .gitignore              # .envなどのコミットしたくないフォルダ・ファイルを設定
-└── .venv/                  # Pythonの仮想環境！
-```
-
-## 5. 参考文献
+## 6. 参考文献
 [Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
 
 

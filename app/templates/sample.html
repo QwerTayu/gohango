@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新規学生登録</title>
-  <script src="{{ url_for('static', filename='js/sample.js') }}" defer></script>
-</head>
-<body>
-  <h1>新規学生登録フォーム 📝</h1>
+{% extends "layout.html" %}
 
+{% block title %}
+新規学生登録
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+{% block head_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+{% endblock %}
+
+
+{% block content %}
+  <h1>新規学生登録フォーム 📝</h1>
+  
   <form id="student-entry-form">
     <label for="student-id-field">学籍番号</label>
     <input type="text" id="student-id-field" name="studentId" placeholder="例: M1234">
-    
     <button type="submit">登録</button>
   </form>
-
   <div id="error-display"></div>
 
   <h2>登録ユーザーリスト取得</h2>
   <ul id="user-list-display">
     <li>読み込み中...⏳</li>
   </ul>
+{% endblock %}
 
-</body>
-</html>
+
+{# このページ専用のJavaScriptをここに追加する #}
+{% block body_js %}
+  <script src="{{ url_for('static', filename='js/sample.js') }}" defer></script>
+{% endblock %}
