@@ -13,3 +13,21 @@ services:
       POSTGRES_USER: "root"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "gohango"
+
+# liquibase
+  liquibase:
+    image: liquibase/liquibase:4.23
+    container_name: liquibase
+    volumes:
+      - ./migration:/liquibase/changelog
+      - ./liquibase.properties:/liquibase/liquibase.properties
+    environment:
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/gohango
+      LIQUIBASE_COMMAND_USERNAME: root
+      LIQUIBASE_COMMAND_PASSWORD: password
+      LIQUIBASE_COMMAND_CHANGELOG_FILE: changelog.xml
+    depends_on:
+      - db
+    command: ["update"]
+    profiles:
+      - init

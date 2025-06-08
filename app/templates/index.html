@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+新規学生登録
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+{% block head_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <p>{{message}} {{query}}</p>
+    {% if query == 'foo' %}
+    <p>foo!!!!!</p>
+    {% elif query %}
+    <p>query: {{query}}</p>
+    {% else %}
+    <p>No query provided.</p>
+    {% endif %}
+    {% for hiragana in ['a', 'i', 'u', 'e', 'o'] %}
+    <p>{{hiragana}}</p>
+    {% endfor %}
+{% endblock %}
