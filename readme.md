@@ -1,6 +1,8 @@
 > [!WARNING]
 > ルートディレクトリである`gohango`配下で作業することを前提としています
->
+
+> [!NOTE]
+> 説明内の`@/`はルートディレクトリを意味します。
 
 ## 1. 参加する前に
 1. [UVのサイト](https://docs.astral.sh/uv/getting-started/installation/)にアクセスして`uv`をインストール。(`uv -V`でパスが通ってることを確認)
@@ -52,6 +54,23 @@ uv run run.py
 ```
 uv add パッケージ名
 ```
+
+## 5. 新しいページを作成する
+1. `@/app/__init__.py` にBluePrint登録（ここにファイルがあるから読み込んでね！！ってやつ）を行う。
+  ```
+  from .フォルダ名.ファイル名 import ＢＰ名
+  app.register_blueprint(ＢＰ名)
+  ```
+2. `@/app/フォルダ名`フォルダを作成。他の(sampleフォルダ)とかと同じ構成にする。(`__init__.py`, `routes.py`とかもイイ感じに作成)
+
+3. 作成した`routes.py`に下記を追加
+  ```
+  @ＢＰ名.route("/") # フォルダ名/の後にどのようにルーティングするか
+  def 分かりやすい関数名():
+      return render_template("templateフォルダ内のhtmlファイル", 渡す変数)
+  ```
+
+4. `@/app/template`フォルダ内にhtmlファイルを作成。
 
 ## 5. 参考文献
 [Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
