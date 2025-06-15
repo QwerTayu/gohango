@@ -2,7 +2,7 @@ version: '3.7'
 
 # local
 services:
-  db:
+  gohango_db:
     image: postgres:14.6
     command:
       ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
@@ -22,12 +22,12 @@ services:
       - ./migration:/liquibase/changelog
       - ./liquibase.properties:/liquibase/liquibase.properties
     environment:
-      LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/gohango
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://gohango_db:5432/gohango
       LIQUIBASE_COMMAND_USERNAME: root
       LIQUIBASE_COMMAND_PASSWORD: password
       LIQUIBASE_COMMAND_CHANGELOG_FILE: changelog.xml
     depends_on:
-      - db
+      - gohango_db
     command: ["update"]
     profiles:
       - init
