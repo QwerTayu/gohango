@@ -26,6 +26,9 @@ def create_app():
   from .setting.routes import setting_bp
   app.register_blueprint(setting_bp, url_prefix='/setting')
 
+  from .menus.routes import menus_bp
+  app.register_blueprint(menus_bp, url_prefix='/menus')
+
   from .sample.routes import sample_bp
   app.register_blueprint(sample_bp, url_prefix='/sample')
 
