@@ -22,6 +22,9 @@ def create_app():
   # --- Blueprintの登録 ---
   from .main.routes import main_bp
   app.register_blueprint(main_bp)
+  
+  from .setting.routes import setting_bp
+  app.register_blueprint(setting_bp, url_prefix='/setting')
 
   from .sample.routes import sample_bp
   app.register_blueprint(sample_bp, url_prefix='/sample')
