@@ -7,13 +7,15 @@
     {% block head_css %}{% endblock %}
 </head>
 <body>
-    {% include 'components/header.html' %}
+<div class="container">
+{% include 'components/header.html' %}
 
     <main style="padding: 1rem;">
         {% block content %}
         {% endblock %}
     </main>
-
+{% include 'components/nav.html' %}    
+</div>
     {% block body_js %}{% endblock %}
 </body>
 </html>

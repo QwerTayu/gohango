@@ -1,0 +1,46 @@
+
+nav {
+    background: #fff; /* 透過をやめて白背景に */
+    padding: 0.5em 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+body {
+    margin-top: 72px; /* navの高さに合わせて調整（必要なら増減） */
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em; /* ボタン間のスペース */
+}
+
+nav li {
+    display: flex;
+}
+
+nav a {
+    display: block;
+    background: #ffffff;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1em 2em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+    border: 1px solid #e0e0e0;
+}
+
+nav a:hover {
+    background: #2c3e50;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.15);
+    border-color: #2c3e50;
+}
