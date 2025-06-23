@@ -5,13 +5,30 @@
 {% endblock %}
 
 {# このページ専用のCSSがあればここに追加できる #}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}"/>
+
+{% block head %}
+  <link rel="icon" href="{{ url_for('static', filename='image/favicon.ico') }}" type="image/x-icon">
+{% endblock %}
 {% block head_css %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
 {% endblock %}
 
 
 {% block content %}
-設定ページ
+  <h1>新規学生登録フォーム 📝</h1>
+  
+  <form id="student-entry-form">
+    <label for="student-id-field">学籍番号</label>
+    <input type="text" id="student-id-field" name="studentId" placeholder="例: M1234">
+    <button type="submit">登録</button>
+  </form>
+  <div id="error-display"></div>
+
+  <h2>登録ユーザーリスト取得</h2>
+  <ul id="user-list-display">
+    <li>読み込み中...⏳</li>
+  </ul>
 {% endblock %}
 
 
