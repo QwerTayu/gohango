@@ -1,0 +1,16 @@
+/* 例: static/css/header.css などに追加 */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1100;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    padding: 0.5em 0;
+}
+
+/* ヘッダーの高さ分だけ下に余白をつける */
+.container {
+    margin-top: 72px; /* ヘッダーの高さに合わせて調整 */
+}
