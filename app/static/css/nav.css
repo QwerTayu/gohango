@@ -1,6 +1,6 @@
 
 nav {
-    background: #fff; /* 透過をやめて白背景に */
+    background: #981d30; /* 透過をやめて白背景に */
     padding: 0.5em 0;
     position: fixed;
     bottom: 0;
@@ -27,8 +27,8 @@ nav li {
 
 nav a {
     display: block;
-    background: #ffffff;
-    color: #2c3e50;
+    background: rgb(152,29,48,0.8);
+    color: #ffffe0;
     text-decoration: none;
     font-weight: bold;
     padding: 1em 2em;
@@ -39,8 +39,8 @@ nav a {
 }
 
 nav a:hover {
-    background: #2c3e50;
-    color: #fff;
+    background: #ffffe0;
+    color: #981d30;
     box-shadow: 0 4px 16px rgba(44,62,80,0.15);
-    border-color: #2c3e50;
+    border-color: #981d30;
 }
