@@ -4,11 +4,19 @@ from psycopg2 import errors
 
 api_users_bp = Blueprint('api_users_bp', __name__, url_prefix='/api/v1/users')
 
+# ユーザ情報を student_id で取得するAPIエンドポイント
+"""
+req: GET /api/v1/users/<student_id>
+res: 200 OK, JSON object
+```
+{
+  "student_id": "123456",
+  "created_at": "2025-06-20T12:00:00Z"
+}
+```
+"""
 @api_users_bp.route('/<student_id>', methods=['GET'])
 def get_users_by_studentid(student_id):
-  """
-  ユーザ情報を student_id で取得するAPIエンドポイント
-  """
   cur = get_cursor()
   cur.execute("SELECT student_id, created_at FROM users WHERE student_id = %s;", (student_id,))
   item = cur.fetchone() 
@@ -30,12 +38,21 @@ def get_users():
     return jsonify({"error": "User not found"}), 404
   return jsonify(item), 200
 
+# ユーザ情報を登録するAPIエンドポイント
+"""
+req: POST /api/v1/users/
+body: { "student_id": "123456", "created_at": "2025-06-20T12:00:00Z" }
+res: 201 Created, JSON object
+```
+{
+  "message": "User created successfully!",
+  "student_id": "123456",
+  "created_at": "2025-06-20T12:00:00Z"
+}
+```
+""" 
 @api_users_bp.route('/', methods=['POST'])
 def post_users():
-  """
-  ユーザ情報を登録するAPIエンドポイント
-  リクエストボディから student_id と created_at を受け取る
-  """
   data = request.get_json()
   if not data:
       return jsonify({"error": "Request body must be JSON"}), 400
