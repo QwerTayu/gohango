@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+今日のメニュー ({{ date }})
+{% endblock %}
+
+{% block content %}
+  <h2>今日 ({{ date }}) のメニュー一覧</h2>
+  <ul id="menu-list">
+    <li>読み込み中...⏳</li>
+  </ul>
+{% endblock %}
+
+{% block body_js %}
+  <script src="{{ url_for('static', filename='js/menu_today.js') }}" defer></script>
+{% endblock %}
