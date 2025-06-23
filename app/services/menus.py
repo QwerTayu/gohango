@@ -89,7 +89,7 @@ res: 200 OK, JSON array with soldout counts
 ```
 """
 @api_menus_bp.route('/today', methods=['GET'])
-def get_menus_by_date():
+def get_menus_today():
   date = request.args.get('date')
   if not date:
       return jsonify({"error": "date query param required"}), 400
