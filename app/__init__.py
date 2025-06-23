@@ -29,4 +29,10 @@ def create_app():
   from .services.users import api_users_bp
   app.register_blueprint(api_users_bp)
 
+  from .services.menus import api_menus_bp
+  app.register_blueprint(api_menus_bp)
+
+  from .services.soldout_reports import api_soldout_bp
+  app.register_blueprint(api_soldout_bp)
+
   return app
