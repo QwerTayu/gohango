@@ -7,18 +7,163 @@
 {# このページ専用のCSSがあればここに追加できる #}
 {% block head_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <p>{{message}} {{query}}</p>
-    {% if query == 'foo' %}
-    <p>foo!!!!!</p>
-    {% elif query %}
-    <p>query: {{query}}</p>
-    {% else %}
-    <p>No query provided.</p>
-    {% endif %}
-    {% for hiragana in ['a', 'i', 'u', 'e', 'o'] %}
-    <p>{{hiragana}}</p>
-    {% endfor %}
+
+<div class="fixed-button-container">
+    <button class="sold-out-button">売り切れ報告</button>
+</div>
+
+<main class="menu-container">
+    <div class="menu-item sold-out"> {# 売り切れの場合は'sold-out'クラスを追加 #}
+        <div class="sold-out-overlay">×</div>
+        <div class="special-badge">夏バテ防止に！</div>
+        <h2 class="menu-name">A定食</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-egg">卵</span>
+            <span class="allergy-item allergy-milk">乳</span>
+            <span class="allergy-item allergy-wheat">小麦</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">500円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <div class="special-badge">ボリューム満点！</div>
+        <h2 class="menu-name">Bランチ</h2>
+        <p class="allergies">
+            {# <span class="allergy-item allergy-none">なし</span> -- この行を削除 #}
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">650円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <div class="special-badge">辛さ控えめ！</div>
+        <h2 class="menu-name">Cカレー</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-milk">乳</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">480円</p>
+        </div>
+    </div>
+
+    <div class="menu-item sold-out">
+        <div class="sold-out-overlay">×</div>
+        <h2 class="menu-name">Dラーメン</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-wheat">小麦</span>
+            <span class="allergy-item allergy-egg">卵</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">700円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <h2 class="menu-name">Eうどん</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-wheat">小麦</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">450円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <div class="special-badge">本日のシェフのおすすめ！</div>
+        <h2 class="menu-name">Fパスタ</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-wheat">小麦</span>
+            <span class="allergy-item allergy-milk">乳</span>
+            <span class="allergy-item allergy-egg">卵</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">600円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <h2 class="menu-name">Gサンドイッチ</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-wheat">小麦</span>
+            <span class="allergy-item allergy-milk">乳</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">350円</p>
+        </div>
+    </div>
+
+    <div class="menu-item sold-out">
+        <div class="sold-out-overlay">×</div>
+        <h2 class="menu-name">Hサラダ</h2>
+        <p class="allergies">
+            {# <span class="allergy-item allergy-none">なし</span> -- この行を削除 #}
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">400円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <div class="special-badge">がっつり食べたい方に！</div>
+        <h2 class="menu-name">I丼もの</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-egg">卵</span>
+            <span class="allergy-item allergy-wheat">小麦</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">550円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <h2 class="menu-name">Jおにぎりセット</h2>
+        <p class="allergies">
+            {# <span class="allergy-item allergy-none">なし</span> -- この行を削除 #}
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">300円</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <h2 class="menu-name">全アレルギー定食</h2>
+        <p class="allergies">
+            <span class="allergy-item allergy-wheat">小麦</span>
+            <span class="allergy-item allergy-milk">乳</span>
+            <span class="allergy-item allergy-egg">卵</span>
+            <span class="allergy-item allergy-buckwheat">そば</span>
+            <span class="allergy-item allergy-peanut">落花生</span>
+            <span class="allergy-item allergy-shrimp">エビ</span>
+            <span class="allergy-item allergy-crab">カニ</span>
+            <span class="allergy-item allergy-walnut">くるみ</span>
+        </p>
+        <div class="price-container">
+            <span class="school-name">明石工業高等専門学校</span>
+            <p class="price">980円</p>
+        </div>
+    </div>
+</main>
+
+<footer class="dummy-footer">
+    <p>&copy; 2025 食堂管理システム</p>
+</footer>
 {% endblock %}
