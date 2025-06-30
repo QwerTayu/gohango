@@ -10,34 +10,30 @@ body {
 /* DotGothic16フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
-.fixed-button-container {
-    position: fixed;
-     /* Changed from 60px to 0 to align to the very top */
-    width: 100%;
-    
-    background-color: #transparent;
-    padding: 0 0;
-    z-index: 99;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-}
 
 .sold-out-button {
+    position: fixed;
+    /* ヘッダーの高さ + 隙間20px */
+    top: calc(60px + 20px); /* ★ここをヘッダーの高さに合わせる★ */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    z-index: 99;
+
+    /* 見た目に関する設定 */
     background-color: #dcd935;
     color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
-    
-    margin-right: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.sold-out-button:hover {
-    background-color: #c82333;
-}
 
 .menu-container {
     flex-grow: 1;
