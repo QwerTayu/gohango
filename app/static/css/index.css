@@ -4,49 +4,35 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* 画面の高さ全体を使う */
+    background-color: white; /* これを追加 */
 }
 
 /* DotGothic16フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
-
-.dummy-header {
-    background-color: #f8f8f8;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    box-sizing: border-box;
-    height: 60px;
-}
-
-.dummy-header h1 {
-    display: none;
-}
-
 .fixed-button-container {
     position: fixed;
-    top: 60px;
+     /* Changed from 60px to 0 to align to the very top */
     width: 100%;
-    text-align: center;
-    background-color: #f8f8f8;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    
+    background-color: #transparent;
+    padding: 0 0;
     z-index: 99;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 .sold-out-button {
-    background-color: #dc3545;
-    color: white;
+    background-color: #dcd935;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    
+    margin-right: 25px;
 }
 
 .sold-out-button:hover {
@@ -61,7 +47,7 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    margin-top: 130px;
+    margin-top: 40px; 
 }
 
 .menu-item {
@@ -128,10 +114,10 @@ body {
 
 .allergy-item {
     display: inline-block;
-    padding: 2px 5px;
+    padding: 2px 2%;
     border: 1px solid;
     border-radius: 3px;
-    font-size: calc(0.7em * 1.1); /* ★変更: さらに1.2倍 */
+    font-size: calc(0.6em ); /* ★変更: さらに1.2倍 */
     white-space: nowrap;
 }
 
