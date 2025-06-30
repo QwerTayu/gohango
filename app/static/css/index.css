@@ -35,33 +35,24 @@ body {
 }
 
 
+/* ここからメニュー */
+
 .menu-container {
-    flex-grow: 1;
-    padding: 20px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
     align-items: center;
-    margin-top: 40px; 
+    justify-content: flex-start;
 }
 
-.menu-item {
-    background-color: #fff;
-    border: 2px solid #333;
-    border-radius: 4px;
-    padding: 5px;
+.list {
     width: 80%;
     max-width: 400px;
-    aspect-ratio: 2 / 1; /* 縦横比を横2:縦1に設定 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden; /* コンテンツがはみ出すのを防ぐ */
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
-    font-family: "DotGothic16", sans-serif;
-    padding-bottom: 5px;
+    gap: 15px;
 }
 
 .menu-item.sold-out {
@@ -86,26 +77,84 @@ body {
     font-family: sans-serif;
 }
 
-.menu-name {
+.menu-item {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 4px;
     font-family: "DotGothic16", sans-serif;
-    font-size: 2.5em;
-    color: #333;
+
+    position: relative;
+}
+
+@media screen and (max-width: 300px) {
+    .menu-item {
+        font-size: 7px;
+    }
+}
+
+@media screen and (min-width: 301px) and (max-width: 340px) {
+    .menu-item {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 341px) and (max-width: 400px) {
+    .menu-item {
+        font-size: 14px;
+    }
+}
+
+.menu-item * {
     margin: 0;
-    text-align: left;
+    padding: 0;
+}
+
+.special-badge {
+    position: absolute;
+    font-size: 100%;
+    font-style: italic;
+    text-decoration: underline;
     flex-shrink: 0;
-    padding-left: 5px;
-    margin-top: 5px;
+    color: black;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-type {
+    position: absolute;
+    font-size: 100%;
+    flex-shrink: 0;
+    color: #555;
+    top: 6%;
+    left: 3%;
+}
+
+.menu-name {
+    position: absolute;
+    font-size: 150%;
+    flex-shrink: 0;
+    color: #333;
+    top: 15%;
+    left: 3%;
 }
 
 .allergies {
-    font-size: calc(0.8em * 1.2 * 1.2); /* ★変更: さらに1.2倍 */
+    position: absolute;
+    font-size: 100%;
+    flex-shrink: 0;
     color: #666;
-    margin: 5px 0;
+    bottom: 22%;
+    left: 3%;
+    right: 3%;
+
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 1%;
     justify-content: flex-start;
-    padding-left: 5px;
 }
 
 .allergy-item {
@@ -118,61 +167,31 @@ body {
 }
 
 /* アレルギーの種類に応じた色分け（例） */
-.allergy-egg { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
-.allergy-milk { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
-.allergy-wheat { border-color: #28a745; background-color: #d4edda; color: #155724; }
-.allergy-none { border-color: #6c757d; background-color: #e9ecef; color: #495057; }
-.allergy-buckwheat { border-color: #8B4513; background-color: #F5DEB3; color: #8B4513; }
-.allergy-peanut { border-color: #A0522D; background-color: #F4A460; color: #A0522D; }
-.allergy-shrimp { border-color: #FF6347; background-color: #FFDAB9; color: #FF6347; }
-.allergy-crab { border-color: #CD5C5C; background-color: #F08080; color: #CD5C5C; }
-.allergy-walnut { border-color: #696969; background-color: #D3D3D3; color: #696969; }
+.allergy-tamago { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
+.allergy-nyuu { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
+.allergy-komugi { border-color: #28a745; background-color: #d4edda; color: #155724; }
+.allergy-soba { border-color: #8B4513; background-color: #F5DEB3; color: #8B4513; }
+.allergy-rakka { border-color: #A0522D; background-color: #F4A460; color: #A0522D; }
+.allergy-ebi { border-color: #FF6347; background-color: #FFDAB9; color: #FF6347; }
+.allergy-kani { border-color: #CD5C5C; background-color: #F08080; color: #CD5C5C; }
+.allergy-kurumi { border-color: #696969; background-color: #D3D3D3; color: #696969; }
 
-
-.price-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 100%;
-    flex-grow: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: auto;
-    padding-top: 0;
-}
-
-.school-name {
-    font-size: calc(0.8em * 1.7);
-    color: #000;
-    white-space: nowrap;
-    margin-bottom: 0;
+.school {
+    position: absolute;
+    font-size: 100%;
+    flex-shrink: 0;
+    color: #333;
+    bottom: 5%;
+    left: 3%;
 }
 
 .price {
-    font-size: calc(1.5em * 1.5);
+    position: absolute;
+    font-size: 170%;
     font-weight: bold;
-    color: #007bff;
-}
-
-.special-badge {
-    text-align: center;
-    font-style: italic;
-    text-decoration: underline;
-    color: black;
-    font-size: 0.9em;
-    margin-top: 0;
-    margin-bottom: 5px;
-    padding-bottom: 0;
     flex-shrink: 0;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.dummy-footer {
-    background-color: #f8f8f8;
-    padding: 15px;
-    text-align: center;
-    border-top: 1px solid #eee;
-    color: #555;
+    color: #007bff;
+    bottom: 5%;
+    right: 3%;
+    text-align: right;
 }
