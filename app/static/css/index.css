@@ -1,3 +1,196 @@
-.title {
-  color: red;
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 画面の高さ全体を使う */
+}
+
+/* DotGothic16フォントの読み込み */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+
+.dummy-header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+.dummy-header h1 {
+    display: none;
+}
+
+.fixed-button-container {
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    z-index: 99;
+    box-sizing: border-box;
+}
+
+.sold-out-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sold-out-button:hover {
+    background-color: #c82333;
+}
+
+.menu-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 130px;
+}
+
+.menu-item {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 4px;
+    padding: 5px;
+    width: 80%;
+    max-width: 400px;
+    aspect-ratio: 2 / 1; /* 縦横比を横2:縦1に設定 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden; /* コンテンツがはみ出すのを防ぐ */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: "DotGothic16", sans-serif;
+    padding-bottom: 5px;
+}
+
+.menu-item.sold-out {
+    opacity: 0.6;
+}
+
+.sold-out-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: red;
+    font-size: 150px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 10;
+    font-family: sans-serif;
+}
+
+.menu-name {
+    font-family: "DotGothic16", sans-serif;
+    font-size: 2.5em;
+    color: #333;
+    margin: 0;
+    text-align: left;
+    flex-shrink: 0;
+    padding-left: 5px;
+    margin-top: 5px;
+}
+
+.allergies {
+    font-size: calc(0.8em * 1.2 * 1.2); /* ★変更: さらに1.2倍 */
+    color: #666;
+    margin: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.allergy-item {
+    display: inline-block;
+    padding: 2px 5px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: calc(0.7em * 1.1); /* ★変更: さらに1.2倍 */
+    white-space: nowrap;
+}
+
+/* アレルギーの種類に応じた色分け（例） */
+.allergy-egg { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
+.allergy-milk { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
+.allergy-wheat { border-color: #28a745; background-color: #d4edda; color: #155724; }
+.allergy-none { border-color: #6c757d; background-color: #e9ecef; color: #495057; }
+.allergy-buckwheat { border-color: #8B4513; background-color: #F5DEB3; color: #8B4513; }
+.allergy-peanut { border-color: #A0522D; background-color: #F4A460; color: #A0522D; }
+.allergy-shrimp { border-color: #FF6347; background-color: #FFDAB9; color: #FF6347; }
+.allergy-crab { border-color: #CD5C5C; background-color: #F08080; color: #CD5C5C; }
+.allergy-walnut { border-color: #696969; background-color: #D3D3D3; color: #696969; }
+
+
+.price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    flex-grow: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: auto;
+    padding-top: 0;
+}
+
+.school-name {
+    font-size: calc(0.8em * 1.7);
+    color: #000;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+.price {
+    font-size: calc(1.5em * 1.5);
+    font-weight: bold;
+    color: #007bff;
+}
+
+.special-badge {
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline;
+    color: black;
+    font-size: 0.9em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-bottom: 0;
+    flex-shrink: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dummy-footer {
+    background-color: #f8f8f8;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    color: #555;
 }
