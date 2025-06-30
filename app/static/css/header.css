@@ -10,7 +10,28 @@ header {
     padding: 0.5em 0;
 }
 
+.logo {
+    max-width: 300px;  /* PCでの最大サイズ（調整OK） */
+    width: 15%;        /* 画面幅の15%で表示（スマホでは縮まる） */
+    height: auto;      /* 縦横比を保ったまま拡大縮小 */
+    display: block;
+    margin: 0 ;   
+}
+
 /* ヘッダーの高さ分だけ下に余白をつける */
 .container {
     margin-top: 72px; /* ヘッダーの高さに合わせて調整 */
+}
+
+/* 例: static/css/header.css など */
+@media (max-width: 700px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .logo {
+    width: 40%;      /* 画面幅の40%で表示 */
+    max-width: none; /* PC用の max-width 制限を解除 */
+  }
 }
