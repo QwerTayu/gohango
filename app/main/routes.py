@@ -49,3 +49,6 @@ def index():
     }
 
     return render_template("index.html", menus=menus, allergy_map=allergy_map)
+@main_bp.route("/report")
+def report():
+    return render_template("soldout.html")

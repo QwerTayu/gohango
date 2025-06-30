@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+売り切れ報告画面
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+{% block head_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/soldout.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <h1>売り切れ報告画面</h1>
+    <p>売り切れている商品を選択してください</p>
+    <form id="soldoutForm">
+        <div class="menu-item">
+            <input type="checkbox" id="a_lunch" name="a_lunch">
+            <label for="a_lunch">Aランチ</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="b_lunch" name="b_lunch">
+            <label for="b_lunch">Bランチ</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="curry" name="curry">
+            <label for="curry">カレー</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="katsu_curry" name="katsu_curry">
+            <label for="katsu_curry">カツカレー</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="katsu_don" name="katsu_don">
+            <label for="katsu_don">カツ丼</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="chuuka_men" name="chuuka_men">
+            <label for="chuuka_men">中華麺</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="udon_soba" name="udon_soba">
+            <label for="udon_soba">うどん・そば</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="soba" name="soba">
+            <label for="soba">そば</label>
+        </div>
+        <div class="menu-item">
+            <input type="checkbox" id="gohan" name="gohan">
+            <label for="gohan">ご飯</label>
+        </div>
+        <button type="submit">売り切れ報告</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/soldout.js') }}"></script>
+{% endblock %}
