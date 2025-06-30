@@ -106,7 +106,7 @@ body {
 
 .menu-name {
     font-family: "DotGothic16", sans-serif;
-    font-size: 2.5em;
+    font-size: 1.5em;
     color: #333;
     margin: 0;
     text-align: left;
@@ -136,15 +136,14 @@ body {
 }
 
 /* アレルギーの種類に応じた色分け（例） */
-.allergy-egg { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
-.allergy-milk { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
-.allergy-wheat { border-color: #28a745; background-color: #d4edda; color: #155724; }
-.allergy-none { border-color: #6c757d; background-color: #e9ecef; color: #495057; }
-.allergy-buckwheat { border-color: #8B4513; background-color: #F5DEB3; color: #8B4513; }
-.allergy-peanut { border-color: #A0522D; background-color: #F4A460; color: #A0522D; }
-.allergy-shrimp { border-color: #FF6347; background-color: #FFDAB9; color: #FF6347; }
-.allergy-crab { border-color: #CD5C5C; background-color: #F08080; color: #CD5C5C; }
-.allergy-walnut { border-color: #696969; background-color: #D3D3D3; color: #696969; }
+.allergy-tamago { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
+.allergy-nyuu { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
+.allergy-komugi { border-color: #28a745; background-color: #d4edda; color: #155724; }
+.allergy-soba { border-color: #8B4513; background-color: #F5DEB3; color: #8B4513; }
+.allergy-rakka { border-color: #A0522D; background-color: #F4A460; color: #A0522D; }
+.allergy-ebi { border-color: #FF6347; background-color: #FFDAB9; color: #FF6347; }
+.allergy-kani { border-color: #CD5C5C; background-color: #F08080; color: #CD5C5C; }
+.allergy-kurumi { border-color: #696969; background-color: #D3D3D3; color: #696969; }
 
 
 .price-container {
@@ -156,7 +155,7 @@ body {
     flex-grow: 1;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: auto;
+    margin-top: 0;
     padding-top: 0;
 }
 
@@ -168,7 +167,7 @@ body {
 }
 
 .price {
-    font-size: calc(1.5em * 1.5);
+    font-size: 1.5em;
     font-weight: bold;
     color: #007bff;
 }
