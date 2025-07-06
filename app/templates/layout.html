@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <title>{% block title %}My Flask App{% endblock %}</title>
 
@@ -15,8 +17,8 @@
         {% block content %}
         {% endblock %}
     </main>
-{% include 'components/nav.html' %}    
 </div>
+    {% include 'components/nav.html' %}    
     {% block body_js %}{% endblock %}
 </body>
 </html>

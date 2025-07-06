@@ -1,5 +1,8 @@
 <header>
-  <!--<h1 class="title"> GohanGO
-  </h1> -->
-  <img src="{{ url_for('static', filename='image/logo.png') }}" alt="GohanGO Logo" style="width: 100px; height: auto;">
+  <img src="{{ url_for('static', filename='image/logo.png') }}" alt="GohanGO Logo" class="logo">
+  <div class="date-display">
+    <p id="current-date-placeholder"></p>
+  </div>
 </header>
+
+<script src="{{ url_for('static', filename='js/header.js') }}"></script>

@@ -8,6 +8,7 @@ nav {
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    font-size: 0.9em;
 }
 body {
     margin-top: 72px; /* navの高さに合わせて調整（必要なら増減） */
@@ -18,7 +19,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 1.5em; /* ボタン間のスペース */
+    gap: 1em; /* ボタン間のスペース */
 }
 
 nav li {
@@ -31,8 +32,7 @@ nav a {
     color: #ffffe0;
     text-decoration: none;
     font-weight: bold;
-    padding: 1em 2em;
-    border-radius: 12px;
+    padding: 1em 2em;;
     box-shadow: 0 2px 8px rgba(44,62,80,0.08);
     transition: background 0.2s, box-shadow 0.2s, color 0.2s;
     border: 1px solid #e0e0e0;
@@ -43,4 +43,27 @@ nav a:hover {
     color: #981d30;
     box-shadow: 0 4px 16px rgba(44,62,80,0.15);
     border-color: #981d30;
+}
+
+/* スマホ用レスポンシブ対応 */
+@media (max-width: 700px) {
+    nav ul {
+        gap: 0.5em;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 0.2em;
+    }
+    nav li {
+        flex: 1 1 0;
+        display: flex;
+        justify-content: center;
+    }
+    nav a {
+        padding: 0.7em 0.2em;
+        font-size: 1em;
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
 }
