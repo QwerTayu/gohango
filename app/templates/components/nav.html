@@ -1,10 +1,40 @@
-<!--cssを読み込み-->
 <link rel="stylesheet" href="/static/css/nav.css">
 
 <nav>
     <ul>
-        <li><a href="/setting">ユーザー設定</a></li>
+        <li><a href="/setting">設定</a></li>
         <li><a href="/">今日のメニュー</a></li>
-        <li><a href="/menus">明日のメニュー</a></li>
+        <li><a id="tomorrow-menu-link" href="/menus">明日のメニュー</a></li>
     </ul>
 </nav>
+
+<script>
+  // HTMLの読み込みが完了した後にスクリプトを実行
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // idを使って「明日のメニュー」のリンク要素を取得
+    const tomorrowMenuLink = document.getElementById('tomorrow-menu-link');
+
+    // 現在の日時を取得
+    const today = new Date();
+
+    // 今日の日付に1日を加えて明日の日付を計算
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    // 明日の日付を「YYYY-MM-DD」形式にフォーマット
+    const year = tomorrow.getFullYear();
+    // getMonth()は0から始まるため+1する。padStart(2, '0')で「05」のように2桁表示にする
+    const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+    // getDate()で日を取得。同じく2桁表示にする
+    const day = String(tomorrow.getDate()).padStart(2, '0');
+    
+    // YYYY-MM-DD形式の文字列を作成
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // リンクのhref属性を生成したURLに設定
+    if (tomorrowMenuLink) {
+      tomorrowMenuLink.href = `/menus/${formattedDate}`;
+    }
+  });
+</script>

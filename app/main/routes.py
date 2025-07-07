@@ -48,7 +48,7 @@ def index():
         "kurumi": "くるみ"
     }
 
-    return render_template("index.html", menus=menus, allergy_map=allergy_map)
+    return render_template("menu_today.html", menus=menus, allergy_map=allergy_map)
 @main_bp.route("/report")
 def report():
     return render_template("soldout.html")

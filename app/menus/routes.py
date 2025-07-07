@@ -4,10 +4,10 @@ from datetime import date
 import requests
 import os
 
-@menus_bp.route("/")
-def index():
-    # today = date.today().strftime('%Y-%m-%d')
-    today = '2025-06-13'
+@menus_bp.route("/<string:date_str>")
+def index(date_str):
+    today = date_str
+    # today = '2025-06-13'
     
     # APIサーバーのURLを環境変数から取得、なければデフォルト値
     api_base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:5000")
@@ -48,4 +48,4 @@ def index():
         "kurumi": "くるみ"
     }
 
-    return render_template("menus.html", menus=menus, allergy_map=allergy_map)
+    return render_template("menu_by_date.html", menus=menus, allergy_map=allergy_map)
