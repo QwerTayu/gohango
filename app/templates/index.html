@@ -14,9 +14,12 @@
 
 {% block content %}
 
+{% set menu_a = menus | selectattr('type', 'equalto', 'A') | first %}
+{% set menu_b = menus | selectattr('type', 'equalto', 'B') | first %}
+
 <main class="menu-container">
     <div class="fixed-button-container">
-        <a href="/report" class="sold-out-button">売り切れ報告</a>
+        <a href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}" class="sold-out-button">売り切れ報告</a>
     </div>
     <div class="list">
         {% for menu in menus %}

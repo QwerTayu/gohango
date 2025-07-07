@@ -3,3 +3,21 @@ h1 {
   border-left: 5px solid #000;
   background: #f6f3d4;
 }
+
+/* スキャナーの表示サイズをいい感じにする魔法のCSS✨ */
+#scanner-container {
+  position: relative; /* 子要素を重ねるための基準にする！超重要！ */
+}
+
+#scanner-container video {
+  width: 100% !important;
+  height: auto !important;
+}
+
+#scanner-container canvas {
+  position: absolute; /* videoの上に重ねる魔法！ */
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important; /* videoと全く同じサイズにする！ */
+}

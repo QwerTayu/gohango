@@ -125,8 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
           type: "LiveStream",
           target: scannerContainer,
           constraints: {
-            width: 640,
-            height: 480,
+            width: 900,
+            height: 600,
             facingMode: "environment", // スマホのリアカメラを使う設定
           },
         },
@@ -146,6 +146,38 @@ document.addEventListener("DOMContentLoaded", () => {
         Quagga.start();
       }
     );
+
+    // ★★★ ここから追加！リアルタイムで枠を描画する神処理 ★★★
+    Quagga.onProcessed((result) => {
+      const drawingCtx = Quagga.canvas.ctx.overlay;
+      const drawingCanvas = Quagga.canvas.dom.overlay;
+
+      if (result) {
+        // 前に描いた枠を一旦ぜんぶ消す！
+        drawingCtx.clearRect(
+          0,
+          0,
+          parseInt(drawingCanvas.getAttribute("width")),
+          parseInt(drawingCanvas.getAttribute("height"))
+        );
+
+        // バーコードとして認識できたエリア（箱）があったら緑の枠を描く！
+        if (result.box) {
+          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
+            color: "#00FF00", // 緑色！
+            lineWidth: 4,
+          });
+        }
+
+        // バーコードの線自体を赤線でなぞる！
+        if (result.codeResult && result.codeResult.code) {
+          Quagga.ImageDebug.drawPath(result.line, { x: "x", y: "y" }, drawingCtx, { 
+            color: "red", 
+            lineWidth: 6 
+          });
+        }
+      }
+    });
 
     Quagga.onDetected((data) => {
       // 処理中の場合はスルー
@@ -184,13 +216,36 @@ document.addEventListener("DOMContentLoaded", () => {
         // 次のスキャンまで少し待つ
         setTimeout(() => {
           isProcessing = false;
-        }, 10); // 0.5秒待つ
+        }, 10);
       }
     });
   });
 
   // ページ読み込み時にまずログイン状態をチェック！
   checkLoginState();
+
+  // ★★★ URLのクエリパラメータをチェックして表示を切り替える処理 ★★★
+  // URLから?以降のパラメータをいい感じに取ってきてくれるマジカルなやつ
+  const urlParams = new URLSearchParams(window.location.search);
+  // 'mode'っていうパラメータがあるかチェック！
+  const mode = urlParams.get('mode');
+  // <hr>も一緒に表示/非表示したいから取っとく
+  const hrSeparator = document.querySelector('#barcode-scanner-area + hr');
+
+  // もしmodeが'text'だったら…
+  if (mode === 'text') {
+    // 手入力フォームを表示！
+    form.style.display = 'block';
+    if (hrSeparator) {
+      hrSeparator.style.display = 'block';
+    }
+  } else {
+    // それ以外は非表示にしとく！
+    form.style.display = 'none';
+    if (hrSeparator) {
+      hrSeparator.style.display = 'none';
+    }
+  }
 
   // フォームの送信イベントに対するリスナーを設定
   form.addEventListener("submit", (event) => {
