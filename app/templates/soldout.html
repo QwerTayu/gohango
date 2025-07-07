@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-売り切れ報告画面
+販売状況報告画面
 {% endblock %}
 
 {# このページ専用のCSSがあればここに追加できる #}
@@ -10,46 +10,33 @@
 {% endblock %}
 
 {% block content %}
-    <h1>売り切れ報告画面</h1>
-    <p>売り切れている商品を選択してください</p>
+    <h1>販売状況報告画面</h1>
+    <p>各メニューの販売状況を選択してください</p>
     <form id="soldoutForm">
-        <div class="menu-item">
-            <input type="checkbox" id="a_lunch" name="a_lunch">
-            <label for="a_lunch">Aランチ</label>
+        {% set menu_items = [
+            ('a_lunch', 'Aランチ'),
+            ('b_lunch', 'Bランチ'),
+            ('curry', 'カレー'),
+            ('katsu_curry', 'カツカレー'),
+            ('katsu_don', 'カツ丼'),
+            ('chuuka_men', '中華麺'),
+            ('udon_soba', 'うどん・そば'),
+            ('gohan', 'ご飯')
+        ] %}
+
+        {% for name, label_text in menu_items %}
+        <div class="menu-status-item">
+            <span class="menu-name">{{ label_text }}</span>
+            <div class="radio-group">
+                <input type="radio" id="{{ name }}_false" name="{{ name }}" value="false">
+                <label for="{{ name }}_false">販売中</label>
+                <input type="radio" id="{{ name }}_true" name="{{ name }}" value="true">
+                <label for="{{ name }}_true">売り切れ</label>
+            </div>
         </div>
-        <div class="menu-item">
-            <input type="checkbox" id="b_lunch" name="b_lunch">
-            <label for="b_lunch">Bランチ</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="curry" name="curry">
-            <label for="curry">カレー</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="katsu_curry" name="katsu_curry">
-            <label for="katsu_curry">カツカレー</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="katsu_don" name="katsu_don">
-            <label for="katsu_don">カツ丼</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="chuuka_men" name="chuuka_men">
-            <label for="chuuka_men">中華麺</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="udon_soba" name="udon_soba">
-            <label for="udon_soba">うどん・そば</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="soba" name="soba">
-            <label for="soba">そば</label>
-        </div>
-        <div class="menu-item">
-            <input type="checkbox" id="gohan" name="gohan">
-            <label for="gohan">ご飯</label>
-        </div>
-        <button type="submit">売り切れ報告</button>
+        {% endfor %}
+
+        <button type="submit">状況を報告</button>
     </form>
 
     <script src="{{ url_for('static', filename='js/soldout.js') }}"></script>
