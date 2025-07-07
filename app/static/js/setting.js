@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scanStatus.textContent = "カメラを準備してるから待っててね...";
 
     const detectedCodes = [];
-    const SCAN_LIMIT = 5;
+    const SCAN_LIMIT = 10;
     // Quagga.onDetectedが短時間に連続で発火するのを防ぐための変数
     let isProcessing = false;
 
@@ -146,6 +146,38 @@ document.addEventListener("DOMContentLoaded", () => {
         Quagga.start();
       }
     );
+
+    // ★★★ ここから追加！リアルタイムで枠を描画する神処理 ★★★
+    Quagga.onProcessed((result) => {
+      const drawingCtx = Quagga.canvas.ctx.overlay;
+      const drawingCanvas = Quagga.canvas.dom.overlay;
+
+      if (result) {
+        // 前に描いた枠を一旦ぜんぶ消す！
+        drawingCtx.clearRect(
+          0,
+          0,
+          parseInt(drawingCanvas.getAttribute("width")),
+          parseInt(drawingCanvas.getAttribute("height"))
+        );
+
+        // バーコードとして認識できたエリア（箱）があったら緑の枠を描く！
+        if (result.box) {
+          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
+            color: "#00FF00", // 緑色！
+            lineWidth: 4,
+          });
+        }
+
+        // バーコードの線自体を赤線でなぞる！
+        if (result.codeResult && result.codeResult.code) {
+          Quagga.ImageDebug.drawPath(result.line, { x: "x", y: "y" }, drawingCtx, { 
+            color: "red", 
+            lineWidth: 6 
+          });
+        }
+      }
+    });
 
     Quagga.onDetected((data) => {
       // 処理中の場合はスルー

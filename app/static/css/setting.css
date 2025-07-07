@@ -5,12 +5,19 @@ h1 {
 }
 
 /* スキャナーの表示サイズをいい感じにする魔法のCSS✨ */
-#scanner-container video,
-#scanner-container canvas {
+#scanner-container {
+  position: relative; /* 子要素を重ねるための基準にする！超重要！ */
+}
+
+#scanner-container video {
   width: 100% !important;
   height: auto !important;
 }
 
 #scanner-container canvas {
-  display: none;
+  position: absolute; /* videoの上に重ねる魔法！ */
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important; /* videoと全く同じサイズにする！ */
 }
