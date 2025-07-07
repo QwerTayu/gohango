@@ -1,12 +1,3 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* 画面の高さ全体を使う */
-    background-color: white; /* これを追加 */
-}
-
 /* DotGothic16フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
@@ -46,8 +37,7 @@ body {
 }
 
 .list {
-    width: 80%;
-    max-width: 400px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
