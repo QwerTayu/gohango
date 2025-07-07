@@ -22,11 +22,23 @@ def create_app():
   # --- Blueprintの登録 ---
   from .main.routes import main_bp
   app.register_blueprint(main_bp)
+  
+  from .setting.routes import setting_bp
+  app.register_blueprint(setting_bp, url_prefix='/setting')
+
+  from .menus.routes import menus_bp
+  app.register_blueprint(menus_bp, url_prefix='/menus')
 
   from .sample.routes import sample_bp
   app.register_blueprint(sample_bp, url_prefix='/sample')
 
   from .services.users import api_users_bp
   app.register_blueprint(api_users_bp)
+
+  from .services.menus import api_menus_bp
+  app.register_blueprint(api_menus_bp)
+
+  from .services.soldout import api_soldout_bp
+  app.register_blueprint(api_soldout_bp)
 
   return app

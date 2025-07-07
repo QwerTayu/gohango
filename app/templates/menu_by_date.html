@@ -7,6 +7,7 @@
 {# このページ専用のCSSがあればここに追加できる #}
 {% block head_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ashita.css') }}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
@@ -14,19 +15,10 @@
 
 {% block content %}
 
-{% set menu_a = menus | selectattr('type', 'equalto', 'A') | first %}
-{% set menu_b = menus | selectattr('type', 'equalto', 'B') | first %}
-
 <main class="menu-container">
-    <div class="fixed-button-container">
-        <a href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}" class="sold-out-button">売り切れ報告</a>
-    </div>
     <div class="list">
         {% for menu in menus %}
-            <div class="menu-item {% if menu.soldout_true > menu.soldout_false %}sold-out{% endif %}" data-menu-key="{{ menu.menu_key }}">
-                {% if menu.soldout_true > menu.soldout_false %}
-                <div class="sold-out-overlay">×</div>
-                {% endif %}
+            <div class="menu-item" data-menu-key="{{ menu.menu_key }}">
                 {% if menu.badge %}
                 <div class="special-badge">{{ menu.badge }}</div>
                 {% endif %}

@@ -1,3 +1,19 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <header>
-  <h1 class="title">GohanGO</h1>
+  <img src="{{ url_for('static', filename='image/logo.png') }}" alt="GohanGO Logo" class="logo">
+
+  <div class="header-right">
+    <div class="date-display">
+      <p id="current-date-placeholder"></p>
+    </div>
+
+    <a id="calendar-toggle">
+      <img src="{{ url_for('static', filename='image/calender.png') }}" alt="カレンダー" class="calendar-icon">
+    </a>
+    <input type="text" id="calendar-input" style="display: none;">
+  </div>
 </header>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{{ url_for('static', filename='js/header.js') }}"></script>

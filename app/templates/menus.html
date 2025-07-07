@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+新規学生登録
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+{% block head_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+{% endblock %}
+
+
+{% block content %}
+今後のメニュー
+{% endblock %}
+
+
+{# このページ専用のJavaScriptをここに追加する #}
+{% block body_js %}
+  <script src="{{ url_for('static', filename='js/sample.js') }}" defer></script>
+{% endblock %}

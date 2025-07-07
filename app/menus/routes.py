@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request
-from . import main_bp
+from . import menus_bp
 from datetime import date
 import requests
 import os
 
-@main_bp.route("/")
-def index():
-    today = date.today().strftime('%Y-%m-%d')
+@menus_bp.route("/<string:date_str>")
+def index(date_str):
+    today = date_str
     # today = '2025-06-13'
     
     # APIサーバーのURLを環境変数から取得、なければデフォルト値
@@ -14,7 +14,7 @@ def index():
     
     # APIエンドポイントからデータを取得
     try:
-        response = requests.get(f"{api_base_url}/api/v1/menus/today", params={"date": today})
+        response = requests.get(f"{api_base_url}/api/v1/menus/date", params={"date": today})
         response.raise_for_status()  # エラーがあれば例外を発生させる
         menus = response.json()
 
@@ -48,7 +48,4 @@ def index():
         "kurumi": "くるみ"
     }
 
-    return render_template("menu_today.html", menus=menus, allergy_map=allergy_map)
-@main_bp.route("/report")
-def report():
-    return render_template("soldout.html")
+    return render_template("menu_by_date.html", menus=menus, allergy_map=allergy_map)

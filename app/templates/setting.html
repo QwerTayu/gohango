@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+新規学生登録
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+
+{% block head %}
+  <link rel="icon" href="{{ url_for('static', filename='image/favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+{% block head_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
+{% endblock %}
+
+
+{% block content %}
+  {# ログインしてる時に表示するエリア (最初は隠しとく) #}
+  <div id="logged-in-view" style="display: none;">
+    <h2>ログインなう！✨</h2>
+    <p>ログイン中: <span id="current-student-id"></span></p>
+    <button id="logout-button">ログアウト</button>
+  </div>
+
+  {# ログインしてない時に表示するエリア #}
+  <div id="logged-out-view">
+    <h2>ユーザ登録を行う</h2>
+
+    <div id="barcode-scanner-area">
+      <button id="start-scan-button">バーコードスキャンで登録</button>
+      <div id="scanner-container" style="display: none; width: 100%; max-width: 320px; margin: 10px auto;"></div>
+      <p id="scan-status"></p>
+    </div>
+
+    <hr>
+
+    <form id="student-entry-form">
+      <label for="student-id-field">学籍番号（手入力）</label>
+      <input type="text" id="student-id-field" name="studentId" placeholder="例: M1234">
+      <button type="submit">登録</button>
+    </form>
+    <div id="error-display"></div>
+  </div>
+{% endblock %}
+
+
+{# このページ専用のJavaScriptをここに追加する #}
+{% block body_js %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script src="{{ url_for('static', filename='js/setting.js') }}" defer></script>
+{% endblock %}

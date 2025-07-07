@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+販売状況報告画面
+{% endblock %}
+
+{# このページ専用のCSSがあればここに追加できる #}
+{% block head_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/soldout.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <h1>販売状況報告画面</h1>
+    <p>各メニューの販売状況を選択してください</p>
+    <form id="soldoutForm">
+        {% set menu_items = [
+            ('a_lunch', 'Aランチ'),
+            ('b_lunch', 'Bランチ'),
+            ('curry', 'カレー'),
+            ('katsu_curry', 'カツカレー'),
+            ('katsu_don', 'カツ丼'),
+            ('chuuka_men', '中華麺'),
+            ('udon_soba', 'うどん・そば'),
+            ('gohan', 'ご飯')
+        ] %}
+
+        {% for name, label_text in menu_items %}
+        <div class="menu-status-item">
+            <span class="menu-name">{{ label_text }}</span>
+            <div class="radio-group">
+                <input type="radio" id="{{ name }}_false" name="{{ name }}" value="false">
+                <label for="{{ name }}_false">販売中</label>
+                <input type="radio" id="{{ name }}_true" name="{{ name }}" value="true">
+                <label for="{{ name }}_true">売り切れ</label>
+            </div>
+        </div>
+        {% endfor %}
+
+        <button type="submit">状況を報告</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/soldout.js') }}"></script>
+{% endblock %}
