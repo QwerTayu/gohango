@@ -1,67 +1,65 @@
-
+/* nav: フッターバー全体の設定 */
 nav {
-    background: #981d30; /* 透過をやめて白背景に */
-    padding: 0.5em 0;
+    background: #981d30;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 4rem; /* 高さを確保し、タップしやすくする */
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
-    font-size: 0.9em;
-    height: 3rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
+
+/* nav ul: ボタンを横に並べるためのコンテナ */
 nav ul {
+    display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1em; /* ボタン間のスペース */
+    width: 100%;
+    height: 100%;
 }
 
+/* nav li: 各ボタンの区画 */
 nav li {
-    display: flex;
+    /* flex: 1; で3つの要素が自動的に均等な幅になる */
+    flex: 1;
+    display: flex; /* 中の<a>タグをflexアイテムとして扱うため */
+
+    /* ボタンの区切り線 */
+    border-left: 1px solid #a82f42;
 }
 
+/* 最初のボタンには左の区切り線は不要 */
+nav li:first-child {
+    border-left: none;
+}
+
+/* nav a: ボタン本体のスタイル */
 nav a {
-    display: block;
-    background: rgb(152,29,48,0.8);
+    /* テキストをボタンの中央に配置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* ボタンのサイズとテキスト設定 */
+    width: 100%;
+    height: 100%;
     color: #ffffe0;
     text-decoration: none;
     font-weight: bold;
-    padding: 1em 2em;;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
-    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
-    border: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 14px; /* px指定でフォントサイズを固定 */
+    padding: 0 5px;  /* 左右の最小限の余白 */
+    line-height: 1.2;
+    word-break: break-word; /* 長いテキストは折り返す */
+    box-sizing: border-box;
+
+    /* タップ/クリック時の色の変化 */
+    transition: background-color 0.2s;
 }
 
-nav a:hover {
-    background: #ffffe0;
-    color: #981d30;
-    box-shadow: 0 4px 16px rgba(44,62,80,0.15);
-    border-color: #981d30;
-}
-
-/* スマホ用レスポンシブ対応 */
-@media (max-width: 700px) {
-    nav ul {
-        gap: 0.5em;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 0.2em;
-    }
-    nav li {
-        flex: 1 1 0;
-        display: flex;
-        justify-content: center;
-    }
-    nav a {
-        padding: 0.7em 0.2em;
-        font-size: 1em;
-        min-width: 0;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-    }
+/* ボタンをタップ/クリックしたときの見た目 */
+nav a:hover, nav a:active {
+    background-color: #a82f42;
 }
