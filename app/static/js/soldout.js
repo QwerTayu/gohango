@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('売り切れ報告ステータス:', soldoutStatus);
 
         alert('売り切れ報告が送信されました。詳細はコンソールを確認してください。');
+
         // 例: 実際にはここで fetch API などを使ってサーバーにデータを送信します
         /*
         fetch('/api/soldout', {

@@ -5,12 +5,12 @@
 {% endblock %}
 
 {# このページ専用のCSSがあればここに追加できる #}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}"/>
 
 {% block head %}
   <link rel="icon" href="{{ url_for('static', filename='image/favicon.ico') }}" type="image/x-icon">
 {% endblock %}
 {% block head_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/setting.css') }}"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
 {% endblock %}
 
@@ -29,7 +29,7 @@
 
     <div id="barcode-scanner-area">
       <button id="start-scan-button">バーコードスキャンで登録</button>
-      <div id="scanner-container" style="display: none; width: 100%; max-width: 640px; margin: 10px auto;"></div>
+      <div id="scanner-container" style="display: none; width: 100%; max-width: 320px; margin: 10px auto;"></div>
       <p id="scan-status"></p>
     </div>
 
