@@ -17,9 +17,9 @@
 {% set menu_a = menus | selectattr('type', 'equalto', 'A') | first %}
 {% set menu_b = menus | selectattr('type', 'equalto', 'B') | first %}
 
-<div class="fixed-button-container">
-    <a href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}">売り切れ報告</a>
-</div>
+<a class="fixed-button-container" href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}">
+    <span>売り切れ報告</span>
+</a>
 <div class="list">
     {% for menu in menus %}
         <div class="menu-item {% if menu.soldout_true > menu.soldout_false %}sold-out{% endif %}" data-menu-key="{{ menu.menu_key }}">
@@ -53,6 +53,23 @@
                 {% endif %}
             </h2>
             <h3 class="menu-name">{{ menu.name }}</h3>
+            <div class="menu-status">
+                <p>ユーザから報告されたステータス</p>
+                <div class="graph-container">
+                    {# ↓↓↓ 票がゼロの時にエラーにならないように、先に変数を準備！ ↓↓↓ #}
+                    {% set sold_true = menu.soldout_true or 0 %}
+                    {% set sold_false = menu.soldout_false or 0 %}
+                    {% set total_votes = sold_true + sold_false %}
+
+                    <span>{{ sold_false }}</span>
+                    <div class="graph-bar">
+                        {# ↓↓↓ ここが新しいグラフバー！ ↓↓↓ #}
+                        <div class="available" style="width: {% if total_votes > 0 %}{{ (sold_false / total_votes) * 100 }}{% else %}0{% endif %}%"></div>
+                        <div class="sold-out" style="width: {% if total_votes > 0 %}{{ (sold_true / total_votes) * 100 }}{% else %}0{% endif %}%"></div>
+                    </div>
+                    <span>{{ sold_true }}</span>
+                </div>
+            </div>
             <p class="allergies">
                 {% if menu.allergy %}
                     {% for allergy_key in menu.allergy %}

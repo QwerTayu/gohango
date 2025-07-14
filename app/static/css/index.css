@@ -19,6 +19,7 @@
     box-shadow: 0 4px 12px rgba(255, 137, 181, 0.5);
     transition: all 0.3s ease;
     text-align: center;
+    text-decoration: none;
 }
 
 .fixed-button-container:hover {
@@ -26,7 +27,7 @@
     box-shadow: 0 6px 15px rgba(255, 137, 181, 0.6);
 }
 
-.fixed-button-container > a {
+.fixed-button-container > span {
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
@@ -128,6 +129,40 @@
     color: #333;
     top: 15%;
     left: 3%;
+}
+
+.menu-status {
+    position: absolute;
+    font-size: 80%;
+    flex-shrink: 0;
+    color: #333;
+    top: 33%;
+    left: 3%;
+}
+
+.graph-container {
+    left: 3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.graph-bar {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 0.8rem;
+    background-color: #a3d900;
+}
+
+.graph-bar > .sold-out {
+    height: 100%;
+    background-color: #e54b4b; /* 売り切れ（赤） */
+}
+
+.vote-count {
+    padding: 0 0.5rem;
 }
 
 .allergies {
