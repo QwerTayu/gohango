@@ -110,6 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ★★★ バーコードスキャン処理 ★★★
   startScanButton.addEventListener("click", () => {
+    // // ★★★ HTTPチェック ★★★
+    // if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+    //   scanStatus.textContent = "カメラを使うにはHTTPS接続が必要だよ！ブラウザの設定を確認してみて！";
+    //   scannerContainer.style.display = 'block'; // メッセージ表示エリアは見せる
+    //   return;
+    // }
+    // // ★★★ ここまで ★★★
+
     scannerContainer.style.display = "block";
     scanStatus.textContent = "カメラを準備してるから待っててね...";
 

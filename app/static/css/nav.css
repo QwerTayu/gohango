@@ -1,16 +1,10 @@
-/* nav: フッターバー全体の設定 */
 nav {
-    background: #981d30;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    height: 4rem; /* 高さを確保し、タップしやすくする */
-    z-index: 1000;
+    height: 4rem;
+    background: #981d30;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* nav ul: ボタンを横に並べるためのコンテナ */
 nav ul {
     display: flex;
     list-style: none;
@@ -20,46 +14,40 @@ nav ul {
     height: 100%;
 }
 
-/* nav li: 各ボタンの区画 */
 nav li {
-    /* flex: 1; で3つの要素が自動的に均等な幅になる */
     flex: 1;
-    display: flex; /* 中の<a>タグをflexアイテムとして扱うため */
-
-    /* ボタンの区切り線 */
+    display: flex;
     border-left: 1px solid #a82f42;
 }
 
-/* 最初のボタンには左の区切り線は不要 */
 nav li:first-child {
     border-left: none;
 }
 
-/* nav a: ボタン本体のスタイル */
 nav a {
-    /* テキストをボタンの中央に配置 */
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* ボタンのサイズとテキスト設定 */
     width: 100%;
     height: 100%;
     color: #ffffe0;
     text-decoration: none;
     font-weight: bold;
     text-align: center;
-    font-size: 14px; /* px指定でフォントサイズを固定 */
-    padding: 0 5px;  /* 左右の最小限の余白 */
+    font-size: 14px;
+    padding: 0 5px;
     line-height: 1.2;
-    word-break: break-word; /* 長いテキストは折り返す */
+    word-break: break-word;
     box-sizing: border-box;
 
-    /* タップ/クリック時の色の変化 */
     transition: background-color 0.2s;
 }
 
-/* ボタンをタップ/クリックしたときの見た目 */
 nav a:hover, nav a:active {
     background-color: #a82f42;
+}
+
+nav a.active {
+    border-top: 5px solid #ffffe0;
+    font-weight: 900; /* さらに太くして主張させる！ */
 }

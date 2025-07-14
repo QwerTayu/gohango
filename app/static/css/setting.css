@@ -4,20 +4,120 @@ h1 {
   background: #f6f3d4;
 }
 
-/* スキャナーの表示サイズをいい感じにする魔法のCSS✨ */
-#scanner-container {
-  position: relative; /* 子要素を重ねるための基準にする！超重要！ */
+#logged-out-view, #logged-in-view {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-#scanner-container video {
+h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#start-scan-button {
+  background: linear-gradient(45deg, #ff89b5, #ffc3a0);
+  box-shadow: 0 4px 8px rgba(255, 137, 181, 0.4);
+}
+
+#start-scan-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 137, 181, 0.5);
+}
+
+#student-entry-form button, #logout-button {
+  background-color: #4a90e2;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+#student-entry-form button:hover, #logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+}
+
+#student-entry-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#student-entry-form label {
+  font-weight: bold;
+  color: #444;
+}
+
+#student-entry-form input[type="text"] {
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#student-entry-form input[type="text"]:focus {
+  outline: none;
+  border-color: #ff89b5;
+  box-shadow: 0 0 0 3px rgba(255, 137, 181, 0.3);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #eee;
+  margin: 2rem 0;
+}
+
+#scan-status, #error-display {
+  margin-top: 1rem;
+  min-height: 1.2em;
+  font-weight: bold;
+}
+
+#error-display {
+  color: #e74c3c;
+}
+
+#scanner-container {
+  position: relative;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#scanner-container video,
+#scanner-container canvas {
   width: 100% !important;
   height: auto !important;
 }
 
 #scanner-container canvas {
-  position: absolute; /* videoの上に重ねる魔法！ */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100% !important;
-  height: 100% !important; /* videoと全く同じサイズにする！ */
+  height: 100% !important;
 }

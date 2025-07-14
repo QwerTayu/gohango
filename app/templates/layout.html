@@ -12,9 +12,11 @@
 </head>
 <body>
     {% include 'components/header.html' %}
-    <main class="main-content">
-        {% block content %}
-        {% endblock %}
+    <main class="main-container">
+        <div class="mobile-container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
     {% include 'components/nav.html' %}    
     {% block body_js %}{% endblock %}
