@@ -113,6 +113,53 @@ uv add パッケージ名
 4. `@/app/template`フォルダ内にhtmlファイルを作成。
   `include`, `macro` を多用しよう。
 
+## 6. サーバ接続、ファイル転送、起動など
+```bash
+# まずはプロジェクト全体をzipで固る
+zip -r gohango.zip . -x ".venv/*" "*.pyc" "__pycache__/*" ".git/*" "readme.pdf" "gohango.zip"
+
+# zipファイルをサーバーに転送
+scp gohango.zip user@xxx.xxx.xxx.xxx:~/
+
+# ローカルのzipはもういらないから消す
+rm gohango.zip
+
+# SSHでログイン
+ssh user@xxx.xxx.xxx.xxx
+
+# public_htmlがなかったら作る
+mkdir -p public_html
+
+# zipを解凍して、中身をpublic_htmlに移動
+unzip gohango.zip -d gohango_app
+mv gohango_app/* public_html/
+rm -r gohango_app # 空になったフォルダは削除
+rm gohango.zip # zipファイルも削除
+
+# 作業ディレクトリに移動
+cd public_html
+
+# 本番用の.envファイルにリネーム
+mv .env.production .env
+
+# .sql を実行
+psql -U user -d userdb -f docker/migration/changelogs/各ファイル.sql
+
+# 古いプロセスが残ってたら止める
+fuser -k ポート番号/tcp
+
+# nohupでアプリをバックグラウンド起動
+nohup python3 run.py &
+
+# nohup.outの中身をリアルタイムで監視
+tail -f nohup.out
+
+# プロセスを一つ一つ消す
+ps aux | grep run.py # 動いてるプロセスを確認
+
+kill -p プロセスⅠⅮ # 問答無用で落とす
+```
+
 ## 6. 参考文献
 [Webアプリ初心者のFlaskチュートリアル｜Qiita](https://qiita.com/usaitoen/items/0184973e9de0ea9011ed)
 
