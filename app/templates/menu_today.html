@@ -17,58 +17,56 @@
 {% set menu_a = menus | selectattr('type', 'equalto', 'A') | first %}
 {% set menu_b = menus | selectattr('type', 'equalto', 'B') | first %}
 
-<main class="menu-container">
-    <div class="fixed-button-container">
-        <a href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}" class="sold-out-button">売り切れ報告</a>
-    </div>
-    <div class="list">
-        {% for menu in menus %}
-            <div class="menu-item {% if menu.soldout_true > menu.soldout_false %}sold-out{% endif %}" data-menu-key="{{ menu.menu_key }}">
-                {% if menu.soldout_true > menu.soldout_false %}
-                <div class="sold-out-overlay">×</div>
-                {% endif %}
-                {% if menu.badge %}
-                <div class="special-badge">{{ menu.badge }}</div>
-                {% endif %}
-                <h2 class="menu-type">
-                    {% if menu.type == 'A' %}
-                        Aランチ
-                    {% elif menu.type == 'B' %}
-                        Bランチ
-                    {% elif menu.type == 'C' %}
-                        {% if menu.menu_key == 'C1RRY1' or menu.menu_key == 'PORKC1' %}
-                            カレー
-                        {% elif menu.menu_key == 'KTSDN1' %}
-                            丼
-                        {% elif menu.menu_key == 'SYURM1' %}
-                            中華麺
-                        {% elif menu.menu_key == 'HYUDN1' %}
-                            和麺
-                        {% elif menu.menu_key == 'RICE01' %}
-                            ごはん
-                        {% else %}
-                            常設
-                        {% endif %}
+<div class="fixed-button-container">
+    <a href="/report?menu_a={{ menu_a.menu_key if menu_a else '' }}&menu_b={{ menu_b.menu_key if menu_b else '' }}">売り切れ報告</a>
+</div>
+<div class="list">
+    {% for menu in menus %}
+        <div class="menu-item {% if menu.soldout_true > menu.soldout_false %}sold-out{% endif %}" data-menu-key="{{ menu.menu_key }}">
+            {% if menu.soldout_true > menu.soldout_false %}
+            <div class="sold-out-overlay">×</div>
+            {% endif %}
+            {% if menu.badge %}
+            <div class="special-badge">{{ menu.badge }}</div>
+            {% endif %}
+            <h2 class="menu-type">
+                {% if menu.type == 'A' %}
+                    Aランチ
+                {% elif menu.type == 'B' %}
+                    Bランチ
+                {% elif menu.type == 'C' %}
+                    {% if menu.menu_key == 'C1RRY1' or menu.menu_key == 'PORKC1' %}
+                        カレー
+                    {% elif menu.menu_key == 'KTSDN1' %}
+                        丼
+                    {% elif menu.menu_key == 'SYURM1' %}
+                        中華麺
+                    {% elif menu.menu_key == 'HYUDN1' %}
+                        和麺
+                    {% elif menu.menu_key == 'RICE01' %}
+                        ごはん
                     {% else %}
-                        {{ menu.type }}
+                        常設
                     {% endif %}
-                </h2>
-                <h3 class="menu-name">{{ menu.name }}</h3>
-                <p class="allergies">
-                    {% if menu.allergy %}
-                        {% for allergy_key in menu.allergy %}
-                            {% if allergy_key in allergy_map %}
-                            <span class="allergy-item allergy-{{ allergy_key }}">{{ allergy_map[allergy_key] }}</span>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </p>
-                <p class="school">明石工業高等専門学校</p>
-                <p class="price">{{ menu.price }}円</p>
-            </div>
-            {% else %}
-            <p>今日のメニューはまだ登録されてないみたい…ごめんね！</p>
-            {% endfor %}
-    </div>
-</main>
+                {% else %}
+                    {{ menu.type }}
+                {% endif %}
+            </h2>
+            <h3 class="menu-name">{{ menu.name }}</h3>
+            <p class="allergies">
+                {% if menu.allergy %}
+                    {% for allergy_key in menu.allergy %}
+                        {% if allergy_key in allergy_map %}
+                        <span class="allergy-item allergy-{{ allergy_key }}">{{ allergy_map[allergy_key] }}</span>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </p>
+            <p class="school">明石工業高等専門学校</p>
+            <p class="price">{{ menu.price }}円</p>
+        </div>
+        {% else %}
+        <p>今日のメニューはないみたい...</p>
+        {% endfor %}
+</div>
 {% endblock %}

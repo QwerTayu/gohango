@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const headerRight = document.querySelector('.header-right');
   const currentDatePlaceholder = document.getElementById('current-date-placeholder');
   const currentPagePath = window.location.pathname;
 
@@ -25,9 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (dateToDisplay) {
+    headerRight.style.display = 'flex';
     currentDatePlaceholder.textContent = dateToDisplay;
-  } else {
-    currentDatePlaceholder.style.display = 'none';
   }
 
   // --- カレンダー機能のロジック ---

@@ -1,50 +1,50 @@
 
-/* DotGothic16フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
-
-.sold-out-button {
+.fixed-button-container {
     position: fixed;
-    /* ヘッダーの高さ + 隙間20px */
-    top: calc(60px + 20px); /* ★ここをヘッダーの高さに合わせる★ */
+    top: calc(60px + 20px);
     left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    max-width: 300px;
     z-index: 99;
+    height: 3rem;
 
-    /* 見た目に関する設定 */
-    background-color: #dcd935;
-    color: black;
-    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff89b5, #ffc3a0);
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 50px;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
+    box-shadow: 0 4px 12px rgba(255, 137, 181, 0.5);
+    transition: all 0.3s ease;
     text-align: center;
-    box-sizing: border-box;
 }
 
+.fixed-button-container:hover {
+    transform: translate(-50%, -3px);
+    box-shadow: 0 6px 15px rgba(255, 137, 181, 0.6);
+}
 
-/* ここからメニュー */
-
-.menu-container {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.fixed-button-container > a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
 }
 
 .list {
+    padding-top: 4rem;
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 15px;
-    margin-top: 75px;
+    gap: 1rem;
+}
+
+#ashita {
+    padding-top: 0rem;
 }
 
 .menu-item.sold-out {
@@ -99,10 +99,6 @@
     }
 }
 
-.menu-item * {
-    margin: 0;
-    padding: 0;
-}
 
 .special-badge {
     position: absolute;
@@ -154,11 +150,10 @@
     padding: 2px 2%;
     border: 1px solid;
     border-radius: 3px;
-    font-size: calc(0.6em ); /* ★変更: さらに1.2倍 */
+    font-size: calc(0.6em );
     white-space: nowrap;
 }
 
-/* アレルギーの種類に応じた色分け（例） */
 .allergy-tamago { border-color: #ffc107; background-color: #fff3cd; color: #856404; }
 .allergy-nyuu { border-color: #007bff; background-color: #e0f2ff; color: #004085; }
 .allergy-komugi { border-color: #28a745; background-color: #d4edda; color: #155724; }
