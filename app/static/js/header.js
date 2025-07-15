@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // カレンダーアイコンがクリックされたときにカレンダーを開く
-  calendarToggle.addEventListener('click', function(e) {
+  headerRight.addEventListener('click', function(e) {
     e.preventDefault(); // リンクのデフォルト動作を無効化
     fp.open();
   });

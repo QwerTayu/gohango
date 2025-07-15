@@ -33,6 +33,10 @@
     text-align: center;
     color: #333;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .report-title p {
@@ -61,6 +65,18 @@
     align-items: center;
     padding: 1rem;
     border-bottom: 1px solid #eee;
+}
+
+@media screen and (max-width: 370px) {
+    .menu-status-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .radio-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
 
 .menu-status-item:last-child {
