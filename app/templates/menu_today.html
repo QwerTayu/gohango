@@ -24,10 +24,13 @@
     {% for menu in menus %}
         <div class="menu-item {% if menu.soldout_true > menu.soldout_false %}sold-out{% endif %}" data-menu-key="{{ menu.menu_key }}">
             {% if menu.soldout_true > menu.soldout_false %}
-            <div class="sold-out-overlay">×</div>
+            <div class="sold-out-overlay"></div>
             {% endif %}
             {% if menu.badge %}
             <div class="special-badge">{{ menu.badge }}</div>
+            {% endif %}
+            {% if menu.soldout_true > menu.soldout_false %}
+                <h2 class="is_soldout">売切?</h2>
             {% endif %}
             <h2 class="menu-type">
                 {% if menu.type == 'A' %}
