@@ -42,7 +42,7 @@ header {
 }
 
 .date-display p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333;
   margin: 0;
   padding: 0;
@@ -59,13 +59,13 @@ header {
     max-width: none;
   }
   .header-right {
-    gap: 0.5em;
+    gap: 0.5rem;
   }
   .calendar-icon {
-    height: 1.95em;
+    height: 1.95rem;
   }
   .date-display p {
-    font-size: 1.3em;
+    font-size: 1rem;
   }
 }
 
