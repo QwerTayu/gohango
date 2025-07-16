@@ -1,142 +1,148 @@
 .mobile-container {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 #soldoutForm {
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 1rem);
+  max-width: calc(400px - 1rem);
+  height: calc(100% - 1rem);
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 3px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .report-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .report-title a {
-    top: 1rem;
-    left: 1rem;
-    font-size: 1.2rem;
-    color: #333;
-    cursor: pointer;
-    transition: color 0.3s ease;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .report-title h1 {
-    height: 3rem;
-    text-align: center;
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 3rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .report-title p {
-    height: 48px;
-    width: 48px;
+  height: 48px;
+  width: 48px;
 }
 
 .report-desc {
-    height: 2rem;
-    text-align: center;
-    color: #666;
-    margin-bottom: 1rem;
+  height: 2rem;
+  text-align: center;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .menu-list-container {
-    flex-grow: 1;
-    width: 100%;
-    overflow-y: auto;
-    min-height: 0;
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .menu-status-item {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
 @media screen and (max-width: 370px) {
-    .menu-status-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .radio-group {
-        width: 100%;
-        justify-content: flex-end;
-    }
+  .menu-status-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .radio-group {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .menu-status-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .menu-name {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #444;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #444;
 }
 
 .radio-group {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .radio-group input[type="radio"] {
-    display: none;
+  display: none;
 }
 
 .radio-group label {
-    padding: 8px 16px;
-    border: 2px solid #ddd;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    font-size: 0.8rem;
+  padding: 8px 16px;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 
 .radio-group input[value="true"]:checked + label {
-    background-color: #ff89b5;
-    color: white;
-    border-color: #ff89b5;
+  background-color: #ff89b5;
+  color: white;
+  border-color: #ff89b5;
 }
 
 .radio-group input[value="false"]:checked + label {
-    background-color: #73f762;
-    color: white;
-    border-color: #73f762;
+  background-color: #73f762;
+  color: white;
+  border-color: #73f762;
 }
 
 #soldoutForm button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 12px 24px;
-    flex-shrink: 0;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #4a90e2;
-    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.4);
+  display: block;
+  width: 100%;
+  padding: 12px 24px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #4a90e2;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.4);
 }
 
 #soldoutForm button[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.5);
 }

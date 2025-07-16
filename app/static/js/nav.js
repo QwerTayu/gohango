@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- 「明日のメニュー」のリンクを動的に設定する処理 ---
-    const tomorrowMenuLink = document.getElementById('tomorrow-menu-link');
+    const tomorrowMenuLink = document.getElementById('tomorrow');
     if (tomorrowMenuLink) {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // ★★★ ここからが新しい魔法！ ★★★
     if (currentPath.startsWith('/menus/')) {
         // URLが /menus/ で始まる場合は、「明日のメニュー」をアクティブにする
-        document.getElementById('tomorrow-menu-link')?.classList.add('active');
-    } else if (currentPath === '/setting') {
+        document.getElementById('tomorrow')?.classList.add('active');
+    } else if (currentPath.startsWith('/setting')) {
         // URLが /setting の場合は、「設定」をアクティブにする
-        document.querySelector('a[href="/setting"]')?.classList.add('active');
+        document.getElementById('setting')?.classList.add('active');
     } else if (currentPath === '/') {
         // URLが / の場合は、「今日のメニュー」をアクティブにする
-        document.querySelector('a[href="/"]')?.classList.add('active');
+        document.getElementById('today')?.classList.add('active');
     }
 });
