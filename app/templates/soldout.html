@@ -36,10 +36,10 @@
         <div class="menu-status-item">
           <span class="menu-name">{{ label_text }}</span>
           <div class="radio-group">
-            <input type="radio" id="{{ name }}_false" name="{{ name }}" value="false">
-            <label for="{{ name }}_false">販売中に訂正</label>
             <input type="radio" id="{{ name }}_true" name="{{ name }}" value="true">
             <label for="{{ name }}_true">売切</label>
+            <input type="radio" id="{{ name }}_false" name="{{ name }}" value="false">
+            <label for="{{ name }}_false">販売中に訂正</label>
           </div>
         </div>
       {% endfor %}

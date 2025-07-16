@@ -109,14 +109,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ★★★ バーコードスキャン処理 ★★★
-  startScanButton.addEventListener("click", () => {
-    // // ★★★ HTTPチェック ★★★
-    // if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-    //   scanStatus.textContent = "カメラを使うにはHTTPS接続が必要だよ！ブラウザの設定を確認してみて！";
-    //   scannerContainer.style.display = 'block'; // メッセージ表示エリアは見せる
-    //   return;
-    // }
-    // // ★★★ ここまで ★★★
+   startScanButton.addEventListener("click", () => {
+    // HTTPチェック
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      const userChoice = confirm(
+        "HTTPS接続でないのでカメラを起動できません。\n\n" +
+        "【OK】→ とにかく試行\n" +
+        "【キャンセル】→ 手入力で登録"
+      );
+
+      if (userChoice) {
+        // 「続行」(OK)が選ばれた場合
+        // 何もせず、この後のカメラ起動処理に進む
+        console.log("ユーザーは続行を選択");
+      } else {
+        // 「手入力」(キャンセル)が選ばれた場合
+        window.location.href = "/setting?mode=text";
+        return; // ここで処理を完全にストップ！
+      }
+      // ★★★ ここまで！ ★★★
+    }
 
     scannerContainer.style.display = "block";
     scanStatus.textContent = "カメラを準備してるから待っててね...";
@@ -133,8 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
           type: "LiveStream",
           target: scannerContainer,
           constraints: {
-            width: 900,
-            height: 600,
+            width: { min: 640 },
+            height: { min: 480 },
+            aspectRatio: { min: 1, max: 1 },
             facingMode: "environment", // スマホのリアカメラを使う設定
           },
         },
